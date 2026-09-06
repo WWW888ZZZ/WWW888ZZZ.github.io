@@ -1,1982 +1,407 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="th" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Wasawat | Full-Stack Developer</title>
+  <meta name="description" content="Portfolio ของ Wasawat นักพัฒนา Full-Stack Web Developer">
 
-  <meta
-    name="description"
-    content="Portfolio ของ Wasawat นักพัฒนา Full-Stack Web Developer"
-  >
-
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-  >
-
-  <style>
-    /* =====================================================
-       ROOT
-    ===================================================== */
-
-    :root {
-      --bg: #f7f9fc;
-      --bg-secondary: #eef3f8;
-
-      --surface: rgba(255, 255, 255, 0.78);
-      --surface-solid: #ffffff;
-
-      --text: #111827;
-      --text-secondary: #667085;
-      --text-muted: #98a2b3;
-
-      --border: rgba(15, 23, 42, 0.08);
-
-      --primary: #0f8b82;
-      --primary-dark: #08736c;
-      --primary-light: #dff7f3;
-
-      --blue: #4f46e5;
-
-      --shadow-sm:
-        0 4px 20px rgba(15, 23, 42, 0.05);
-
-      --shadow:
-        0 20px 50px rgba(15, 23, 42, 0.08);
-
-      --shadow-lg:
-        0 30px 80px rgba(15, 23, 42, 0.14);
-
-      --radius: 24px;
-      --radius-sm: 14px;
-
-      --display: "Prompt", sans-serif;
-      --body: "Sarabun", sans-serif;
-
-      --container: 1100px;
-    }
-
-    [data-theme="dark"] {
-      --bg: #090d13;
-      --bg-secondary: #101722;
-
-      --surface: rgba(20, 27, 38, 0.78);
-      --surface-solid: #141b26;
-
-      --text: #f3f6fb;
-      --text-secondary: #9ca8ba;
-      --text-muted: #687587;
-
-      --border: rgba(255, 255, 255, 0.08);
-
-      --primary: #42d9c7;
-      --primary-dark: #2bb5a6;
-      --primary-light: rgba(66, 217, 199, 0.12);
-
-      --shadow-sm:
-        0 4px 20px rgba(0, 0, 0, 0.25);
-
-      --shadow:
-        0 20px 50px rgba(0, 0, 0, 0.3);
-
-      --shadow-lg:
-        0 30px 80px rgba(0, 0, 0, 0.45);
-    }
-
-
-    /* =====================================================
-       RESET
-    ===================================================== */
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: var(--body);
-      background:
-        radial-gradient(
-          circle at 10% 10%,
-          var(--primary-light),
-          transparent 28%
-        ),
-        radial-gradient(
-          circle at 90% 20%,
-          rgba(79, 70, 229, 0.07),
-          transparent 25%
-        ),
-        var(--bg);
-
-      color: var(--text);
-
-      line-height: 1.7;
-
-      transition:
-        background .35s ease,
-        color .35s ease;
-
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font-family: inherit;
-    }
-
-
-    /* =====================================================
-       CONTAINER
-    ===================================================== */
-
-    .container {
-      width: min(var(--container), calc(100% - 40px));
-      margin: auto;
-    }
-
-
-    /* =====================================================
-       NAVBAR
-    ===================================================== */
-
-    .navbar {
-      position: sticky;
-      top: 0;
-
-      z-index: 1000;
-
-      padding: 14px 0;
-
-      background: rgba(247, 249, 252, 0.72);
-
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-
-      border-bottom: 1px solid var(--border);
-    }
-
-    [data-theme="dark"] .navbar {
-      background: rgba(9, 13, 19, 0.72);
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 25px;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-
-      font-family: var(--display);
-      font-weight: 700;
-      font-size: 1.25rem;
-    }
-
-    .logo-dot {
-      width: 11px;
-      height: 11px;
-
-      border-radius: 50%;
-
-      background: var(--primary);
-
-      box-shadow:
-        0 0 0 6px var(--primary-light),
-        0 0 20px var(--primary);
-    }
-
-    .nav-menu {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .nav-menu a {
-      padding: 9px 15px;
-
-      border-radius: 10px;
-
-      color: var(--text-secondary);
-
-      font-size: .94rem;
-      font-weight: 500;
-
-      transition: .2s;
-    }
-
-    .nav-menu a:hover,
-    .nav-menu a.active {
-      color: var(--primary);
-      background: var(--primary-light);
-    }
-
-    .theme-btn {
-      width: 42px;
-      height: 42px;
-
-      border: 1px solid var(--border);
-      border-radius: 12px;
-
-      background: var(--surface);
-
-      color: var(--text);
-
-      cursor: pointer;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-size: 1.05rem;
-
-      box-shadow: var(--shadow-sm);
-
-      transition: .2s;
-    }
-
-    .theme-btn:hover {
-      transform: translateY(-2px);
-      border-color: var(--primary);
-    }
-
-
-    /* =====================================================
-       HERO
-    ===================================================== */
-
-    .hero {
-      position: relative;
-
-      min-height: 700px;
-
-      display: flex;
-      align-items: center;
-
-      padding: 100px 0 90px;
-    }
-
-    .hero::before {
-      content: "";
-
-      position: absolute;
-
-      width: 500px;
-      height: 500px;
-
-      right: -200px;
-      top: 50px;
-
-      background: var(--primary);
-
-      opacity: .07;
-
-      filter: blur(100px);
-
-      border-radius: 50%;
-
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      position: relative;
-
-      display: grid;
-
-      grid-template-columns: 330px 1fr;
-
-      align-items: center;
-
-      gap: 70px;
-    }
-
-    .profile-wrapper {
-      position: relative;
-
-      width: 270px;
-      height: 270px;
-
-      margin: auto;
-    }
-
-    .profile-glow {
-      position: absolute;
-
-      inset: -15px;
-
-      border-radius: 50%;
-
-      background:
-        conic-gradient(
-          var(--primary),
-          #6366f1,
-          var(--primary)
-        );
-
-      animation: rotateGlow 8s linear infinite;
-
-      filter: blur(10px);
-
-      opacity: .65;
-    }
-
-    @keyframes rotateGlow {
-      from {
-        transform: rotate(0);
-      }
-
-      to {
-        transform: rotate(360deg);
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Configuration -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              DEFAULT: '#0f8b82',
+              dark: '#08736c',
+              light: '#dff7f3',
+            },
+            surface: {
+              light: 'rgba(255, 255, 255, 0.78)',
+              dark: 'rgba(20, 27, 38, 0.78)',
+            }
+          },
+          fontFamily: {
+            display: ['Prompt', 'sans-serif'],
+            body: ['Sarabun', 'sans-serif'],
+          },
+          animation: {
+            'spin-slow': 'spin 8s linear infinite',
+            'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'modal-in': 'modalIn 0.3s ease-out forwards',
+          },
+          keyframes: {
+            modalIn: {
+              '0%': { opacity: '0', transform: 'translateY(20px) scale(0.95)' },
+              '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+            }
+          }
+        }
       }
     }
-
-    .profile-image {
-      position: relative;
-
-      width: 270px;
-      height: 270px;
-
-      border-radius: 50%;
-
-      object-fit: cover;
-
-      border: 7px solid var(--surface-solid);
-
-      box-shadow: var(--shadow-lg);
-
-      background: var(--surface-solid);
-    }
-
-    .status {
-      position: absolute;
-
-      right: 5px;
-      bottom: 25px;
-
-      display: flex;
-      align-items: center;
-      gap: 7px;
-
-      padding: 8px 13px;
-
-      background: var(--surface-solid);
-
-      border: 1px solid var(--border);
-
-      border-radius: 999px;
-
-      font-size: .8rem;
-      font-weight: 600;
-
-      box-shadow: var(--shadow);
-
-      z-index: 2;
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-
-      border-radius: 50%;
-
-      background: #22c55e;
-
-      box-shadow: 0 0 0 5px rgba(34, 197, 94, .12);
-    }
-
-    .hero-content {
-      max-width: 700px;
-    }
-
-    .hero-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-
-      padding: 7px 13px;
-
-      border-radius: 999px;
-
-      background: var(--primary-light);
-
-      color: var(--primary);
-
-      font-size: .82rem;
-      font-weight: 600;
-
-      margin-bottom: 20px;
-    }
-
-    .hero-label span {
-      width: 7px;
-      height: 7px;
-
-      background: var(--primary);
-
-      border-radius: 50%;
-
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      50% {
-        opacity: .4;
-        transform: scale(.7);
-      }
-    }
-
-    .hero-title {
-      font-family: var(--display);
-
-      font-size: clamp(2.5rem, 6vw, 4.6rem);
-
-      line-height: 1.12;
-
-      letter-spacing: -.045em;
-
-      margin-bottom: 15px;
-    }
-
-    .hero-title .highlight {
-      color: var(--primary);
-    }
-
-    .hero-role {
-      font-family: var(--display);
-
-      font-size: 1.25rem;
-
-      color: var(--text-secondary);
-
-      margin-bottom: 22px;
-    }
-
-    .hero-description {
-      max-width: 650px;
-
-      color: var(--text-secondary);
-
-      font-size: 1.06rem;
-
-      margin-bottom: 30px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-
-    /* =====================================================
-       BUTTON
-    ===================================================== */
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-
-      padding: 12px 20px;
-
-      border-radius: 12px;
-
-      border: 1px solid var(--primary);
-
-      background: var(--primary);
-
-      color: white;
-
-      font-size: .94rem;
-      font-weight: 600;
-
-      cursor: pointer;
-
-      transition:
-        transform .2s,
-        box-shadow .2s,
-        background .2s;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-
-      box-shadow:
-        0 12px 30px rgba(15, 139, 130, .22);
-    }
-
-    .btn-secondary {
-      background: var(--surface-solid);
-
-      color: var(--text);
-
-      border-color: var(--border);
-
-      box-shadow: var(--shadow-sm);
-    }
-
-    .btn-secondary:hover {
-      color: var(--primary);
-
-      border-color: var(--primary);
-    }
-
-
-    /* =====================================================
-       SECTION
-    ===================================================== */
-
-    section {
-      padding: 100px 0;
-    }
-
-    .section-heading {
-      margin-bottom: 45px;
-    }
-
-    .section-label {
-      color: var(--primary);
-
-      font-size: .8rem;
-
-      font-weight: 700;
-
-      letter-spacing: .12em;
-
-      text-transform: uppercase;
-
-      margin-bottom: 8px;
-    }
-
-    .section-title {
-      font-family: var(--display);
-
-      font-size: clamp(2rem, 4vw, 2.8rem);
-
-      letter-spacing: -.035em;
-
-      margin-bottom: 10px;
-    }
-
-    .section-description {
-      color: var(--text-secondary);
-
-      max-width: 600px;
-    }
-
-
-    /* =====================================================
-       SKILLS
-    ===================================================== */
-
-    .skills-grid {
-      display: grid;
-
-      grid-template-columns: repeat(2, 1fr);
-
-      gap: 18px;
-    }
-
-    .skill-card {
-      position: relative;
-
-      padding: 28px;
-
-      border: 1px solid var(--border);
-
-      border-radius: var(--radius);
-
-      background: var(--surface);
-
-      backdrop-filter: blur(16px);
-
-      box-shadow: var(--shadow-sm);
-
-      overflow: hidden;
-
-      transition: .25s;
-    }
-
-    .skill-card::before {
-      content: "";
-
-      position: absolute;
-
-      width: 120px;
-      height: 120px;
-
-      right: -60px;
-      top: -60px;
-
-      background: var(--primary);
-
-      opacity: .06;
-
-      border-radius: 50%;
-    }
-
-    .skill-card:hover {
-      transform: translateY(-5px);
-
-      border-color: rgba(15, 139, 130, .25);
-
-      box-shadow: var(--shadow);
-    }
-
-    .skill-icon {
-      width: 46px;
-      height: 46px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 13px;
-
-      background: var(--primary-light);
-
-      font-size: 1.3rem;
-
-      margin-bottom: 17px;
-    }
-
-    .skill-card h3 {
-      font-family: var(--display);
-
-      font-size: 1.1rem;
-
-      margin-bottom: 15px;
-    }
-
-    .chips {
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 8px;
-    }
-
-    .chip {
-      padding: 6px 11px;
-
-      border-radius: 8px;
-
-      background: var(--bg-secondary);
-
-      color: var(--text-secondary);
-
-      border: 1px solid var(--border);
-
-      font-size: .82rem;
-
-      transition: .2s;
-    }
-
-    .chip:hover {
-      color: var(--primary);
-
-      border-color: var(--primary);
-
-      background: var(--primary-light);
-    }
-
-
-    /* =====================================================
-       EXPERIENCE
-    ===================================================== */
-
-    .timeline {
-      position: relative;
-
-      max-width: 850px;
-
-      margin: auto;
-
-      padding-left: 40px;
-    }
-
-    .timeline::before {
-      content: "";
-
-      position: absolute;
-
-      left: 8px;
-      top: 5px;
-      bottom: 5px;
-
-      width: 2px;
-
-      background:
-        linear-gradient(
-          var(--primary),
-          transparent
-        );
-
-      opacity: .4;
-    }
-
-    .timeline-item {
-      position: relative;
-
-      padding: 0 0 45px;
-    }
-
-    .timeline-item:last-child {
-      padding-bottom: 0;
-    }
-
-    .timeline-item::before {
-      content: "";
-
-      position: absolute;
-
-      left: -40px;
-      top: 5px;
-
-      width: 18px;
-      height: 18px;
-
-      border-radius: 50%;
-
-      background: var(--surface-solid);
-
-      border: 4px solid var(--primary);
-
-      box-shadow:
-        0 0 0 6px var(--primary-light);
-    }
-
-    .timeline-date {
-      display: inline-block;
-
-      color: var(--primary);
-
-      font-family: var(--display);
-
-      font-size: .85rem;
-
-      font-weight: 600;
-
-      margin-bottom: 7px;
-    }
-
-    .timeline-title {
-      font-family: var(--display);
-
-      font-size: 1.25rem;
-
-      margin-bottom: 3px;
-    }
-
-    .timeline-subtitle {
-      color: var(--text-secondary);
-
-      font-size: .94rem;
-
-      margin-bottom: 8px;
-    }
-
-    .timeline-description {
-      color: var(--text-secondary);
-
-      font-size: .92rem;
-    }
-
-
-    /* =====================================================
-       PROJECTS
-    ===================================================== */
-
-    .projects-grid {
-      display: grid;
-
-      grid-template-columns: repeat(2, 1fr);
-
-      gap: 22px;
-    }
-
-    .project-card {
-      position: relative;
-
-      overflow: hidden;
-
-      border: 1px solid var(--border);
-
-      border-radius: var(--radius);
-
-      background: var(--surface);
-
-      backdrop-filter: blur(15px);
-
-      box-shadow: var(--shadow-sm);
-
-      transition: .3s;
-    }
-
-    .project-card:hover {
-      transform: translateY(-7px);
-
-      box-shadow: var(--shadow-lg);
-
-      border-color: rgba(15, 139, 130, .25);
-    }
-
-    .project-cover {
-      height: 190px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      position: relative;
-
-      overflow: hidden;
-
-      background:
-        radial-gradient(
-          circle at 30% 20%,
-          rgba(15, 139, 130, .22),
-          transparent 35%
-        ),
-        linear-gradient(
-          135deg,
-          var(--bg-secondary),
-          var(--primary-light)
-        );
-    }
-
-    .project-cover::after {
-      content: "";
-
-      position: absolute;
-
-      width: 220px;
-      height: 220px;
-
-      border: 1px solid rgba(15, 139, 130, .15);
-
-      border-radius: 50%;
-
-      transform: translate(80px, -80px);
-    }
-
-    .project-icon {
-      position: relative;
-
-      z-index: 2;
-
-      width: 75px;
-      height: 75px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 20px;
-
-      background: var(--surface-solid);
-
-      font-size: 2rem;
-
-      box-shadow: var(--shadow);
-    }
-
-    .project-body {
-      padding: 25px;
-    }
-
-    .project-title {
-      font-family: var(--display);
-
-      font-size: 1.25rem;
-
-      margin-bottom: 8px;
-    }
-
-    .project-description {
-      color: var(--text-secondary);
-
-      font-size: .91rem;
-
-      min-height: 70px;
-
-      margin-bottom: 18px;
-    }
-
-    .project-tags {
-      display: flex;
-
-      flex-wrap: wrap;
-
-      gap: 7px;
-
-      margin-bottom: 20px;
-    }
-
-    .project-tag {
-      padding: 5px 9px;
-
-      background: var(--primary-light);
-
-      color: var(--primary);
-
-      border-radius: 7px;
-
-      font-size: .76rem;
-
-      font-weight: 600;
-    }
-
-
-    /* =====================================================
-       CONTACT
-    ===================================================== */
-
-    .contact-box {
-      position: relative;
-
-      overflow: hidden;
-
-      text-align: center;
-
-      padding: 75px 30px;
-
-      border: 1px solid var(--border);
-
-      border-radius: 30px;
-
-      background:
-        radial-gradient(
-          circle at 50% 0%,
-          var(--primary-light),
-          transparent 50%
-        ),
-        var(--surface);
-
-      box-shadow: var(--shadow);
-
-      backdrop-filter: blur(20px);
-    }
-
-    .contact-box h2 {
-      font-family: var(--display);
-
-      font-size: clamp(2rem, 5vw, 3rem);
-
-      margin-bottom: 12px;
-    }
-
-    .contact-box p {
-      color: var(--text-secondary);
-
-      max-width: 550px;
-
-      margin: 0 auto 28px;
-    }
-
-    .contact-buttons {
-      display: flex;
-
-      justify-content: center;
-
-      flex-wrap: wrap;
-
-      gap: 10px;
-    }
-
-
-    /* =====================================================
-       FOOTER
-    ===================================================== */
-
-    footer {
-      padding: 35px 0;
-
-      border-top: 1px solid var(--border);
-
-      color: var(--text-muted);
-
-      text-align: center;
-
-      font-size: .86rem;
-    }
-
-    .socials {
-      display: flex;
-
-      justify-content: center;
-
-      gap: 12px;
-
-      margin-bottom: 15px;
-    }
-
-    .socials a {
-      width: 40px;
-      height: 40px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 11px;
-
-      border: 1px solid var(--border);
-
-      background: var(--surface);
-
-      transition: .2s;
-    }
-
-    .socials a:hover {
-      transform: translateY(-3px);
-
-      color: var(--primary);
-
-      border-color: var(--primary);
-    }
-
-
-    /* =====================================================
-       MODAL
-    ===================================================== */
-
-    .modal {
-      position: fixed;
-
-      inset: 0;
-
-      z-index: 2000;
-
-      display: none;
-
-      align-items: center;
-      justify-content: center;
-
-      padding: 20px;
-
-      background: rgba(0, 0, 0, .55);
-
-      backdrop-filter: blur(10px);
-    }
-
-    .modal.show {
-      display: flex;
-    }
-
-    .modal-content {
-      width: min(560px, 100%);
-
-      background: var(--surface-solid);
-
-      border: 1px solid var(--border);
-
-      border-radius: var(--radius);
-
-      padding: 30px;
-
-      box-shadow: var(--shadow-lg);
-
-      animation: modalIn .25s ease;
-    }
-
-    @keyframes modalIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px) scale(.97);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    .modal-content h2 {
-      font-family: var(--display);
-
-      color: var(--primary);
-
-      margin-bottom: 12px;
-    }
-
-    .modal-content p {
-      color: var(--text-secondary);
-    }
-
-    .modal-actions {
-      display: flex;
-
-      gap: 10px;
-
-      flex-wrap: wrap;
-
-      margin-top: 22px;
-    }
-
-    .modal-close {
-      width: 100%;
-
-      margin-top: 18px;
-
-      padding: 11px;
-
-      border-radius: 11px;
-
-      border: 1px solid var(--border);
-
-      background: transparent;
-
-      color: var(--text-secondary);
-
-      cursor: pointer;
-    }
-
-
-    /* =====================================================
-       SCROLL TOP
-    ===================================================== */
-
-    .scroll-top {
-      position: fixed;
-
-      right: 22px;
-      bottom: 22px;
-
-      width: 46px;
-      height: 46px;
-
-      display: none;
-      align-items: center;
-      justify-content: center;
-
-      border: none;
-
-      border-radius: 50%;
-
-      background: var(--primary);
-
-      color: white;
-
-      font-size: 1.1rem;
-
-      cursor: pointer;
-
-      box-shadow: var(--shadow);
-
-      z-index: 900;
-
-      transition: .2s;
-    }
-
-    .scroll-top:hover {
-      transform: translateY(-4px);
-    }
-
-
-    /* =====================================================
-       REVEAL
-    ===================================================== */
-
-    .reveal {
-      opacity: 0;
-
-      transform: translateY(25px);
-
-      transition:
-        opacity .7s ease,
-        transform .7s ease;
-    }
-
-    .reveal.show {
-      opacity: 1;
-
-      transform: translateY(0);
-    }
-
-
-    /* =====================================================
-       RESPONSIVE
-    ===================================================== */
-
-    @media (max-width: 850px) {
-
-      .hero {
-        padding-top: 70px;
-      }
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-
-        text-align: center;
-
-        gap: 45px;
-      }
-
-      .hero-content {
-        margin: auto;
-      }
-
-      .hero-actions {
-        justify-content: center;
-      }
-
-      .skills-grid,
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-menu {
-        gap: 2px;
-      }
-
-      .nav-menu a {
-        padding: 8px 9px;
-
-        font-size: .84rem;
-      }
-    }
-
-
-    @media (max-width: 560px) {
-
-      .container {
-        width: min(
-          var(--container),
-          calc(100% - 28px)
-        );
-      }
-
-      .navbar {
-        padding: 10px 0;
-      }
-
-      .nav-inner {
-        flex-wrap: wrap;
-
-        justify-content: center;
-      }
-
-      .logo {
-        width: 100%;
-
-        justify-content: center;
-      }
-
-      .nav-menu {
-        order: 3;
-
-        width: 100%;
-
-        justify-content: center;
-
-        overflow-x: auto;
-      }
-
-      .theme-btn {
-        position: absolute;
-
-        right: 14px;
-      }
-
-      .hero {
-        min-height: auto;
-
-        padding: 65px 0;
-      }
-
-      .profile-wrapper,
-      .profile-image {
-        width: 210px;
-        height: 210px;
-      }
-
-      .status {
-        right: -5px;
-        bottom: 15px;
-      }
-
-      .hero-title {
-        font-size: 2.4rem;
-      }
-
-      section {
-        padding: 70px 0;
-      }
-
-      .timeline {
-        padding-left: 32px;
-      }
-
-      .timeline-item::before {
-        left: -32px;
-      }
-
-      .project-cover {
-        height: 160px;
-      }
-
-      .contact-box {
-        padding: 55px 20px;
-      }
-    }
-
-
-    @media (prefers-reduced-motion: reduce) {
-
-      *,
-      *::before,
-      *::after {
-        animation-duration: .001ms !important;
-        transition-duration: .001ms !important;
-        scroll-behavior: auto !important;
-      }
-
+  </script>
+
+  <!-- Custom CSS for specific behaviors -->
+  <style type="text/tailwindcss">
+    @layer utilities {
       .reveal {
-        opacity: 1;
-        transform: none;
+        @apply opacity-0 translate-y-8 transition-all duration-700 ease-out;
       }
+      .reveal.show {
+        @apply opacity-100 translate-y-0;
+      }
+      .glass-panel {
+        @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-slate-200/50 dark:border-white/10 shadow-xl;
+      }
+      .glass-card {
+        @apply bg-white/60 dark:bg-slate-800/60 backdrop-blur-lg border border-slate-200 dark:border-white/5 hover:-translate-y-2 hover:shadow-2xl hover:border-primary/30 transition-all duration-300;
+      }
+    }
+    
+    /* Background gradients */
+    body {
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(15, 139, 130, 0.08), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(79, 70, 229, 0.05), transparent 30%);
+    }
+    .dark body {
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(66, 217, 199, 0.08), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(79, 70, 229, 0.05), transparent 30%);
     }
   </style>
 </head>
 
-
-<body>
+<body class="font-body text-slate-800 bg-slate-50 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300 overflow-x-hidden antialiased">
 
   <!-- =====================================================
        NAVBAR
   ===================================================== -->
-
-  <nav class="navbar">
-
-    <div class="container nav-inner">
-
-      <a href="#home" class="logo">
-        <span class="logo-dot"></span>
+  <nav class="sticky top-0 z-50 glass-panel border-b-0 border-t-0 border-x-0 rounded-none shadow-sm">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between flex-wrap gap-4">
+      <a href="#home" class="flex items-center gap-3 font-display font-bold text-xl text-slate-900 dark:text-white group">
+        <span class="w-3 h-3 rounded-full bg-primary shadow-[0_0_0_4px_rgba(15,139,130,0.2)] group-hover:scale-110 transition-transform"></span>
         Wasawat.
       </a>
 
-      <div class="nav-menu">
-
-        <a href="#skills">ทักษะ</a>
-
-        <a href="#experience">ประสบการณ์</a>
-
-        <a href="#projects">ผลงาน</a>
-
-        <a href="#contact">ติดต่อ</a>
-
+      <div class="flex items-center gap-1 md:gap-2 max-md:order-3 max-md:w-full max-md:justify-center overflow-x-auto no-scrollbar pb-1">
+        <a href="#skills" class="nav-link px-4 py-2 rounded-xl text-slate-600 dark:text-slate-400 font-medium hover:text-primary hover:bg-primary/10 transition-all">ทักษะ</a>
+        <a href="#experience" class="nav-link px-4 py-2 rounded-xl text-slate-600 dark:text-slate-400 font-medium hover:text-primary hover:bg-primary/10 transition-all">ประสบการณ์</a>
+        <a href="#projects" class="nav-link px-4 py-2 rounded-xl text-slate-600 dark:text-slate-400 font-medium hover:text-primary hover:bg-primary/10 transition-all">ผลงาน</a>
+        <a href="#contact" class="nav-link px-4 py-2 rounded-xl text-slate-600 dark:text-slate-400 font-medium hover:text-primary hover:bg-primary/10 transition-all">ติดต่อ</a>
       </div>
 
-      <button
-        class="theme-btn"
-        id="themeBtn"
-        title="เปลี่ยนธีม"
-      >
+      <button id="themeBtn" class="w-10 h-10 flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 bg-white/50 dark:bg-slate-800/50 hover:-translate-y-0.5 hover:border-primary transition-all shadow-sm max-md:absolute max-md:right-6" title="เปลี่ยนธีม">
         🌙
       </button>
-
     </div>
-
   </nav>
 
-
-  <!-- =====================================================
-       HERO
-  ===================================================== -->
-
   <main>
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
+    <section id="home" class="relative min-h-[85vh] flex items-center pt-24 pb-20 overflow-hidden">
+      <!-- Glow Blob -->
+      <div class="absolute -right-40 top-20 w-[500px] h-[500px] bg-primary/20 dark:bg-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
 
-    <section class="hero" id="home">
-
-      <div class="container hero-grid">
-
-        <div class="profile-wrapper">
-
-          <div class="profile-glow"></div>
-
-          <img
-            class="profile-image" 
-            src="https://github.com/WWW888ZZZ/Image/blob/main/1.jpg?raw=true"
-            alt="Wasawat"
-          >
-
-          <div class="status">
-            <span class="status-dot"></span>
-            Available for Projects
+      <div class="max-w-6xl mx-auto px-6 w-full grid grid-cols-1 md:grid-cols-[320px_1fr] items-center gap-12 md:gap-20">
+        
+        <!-- Profile Image -->
+        <div class="relative w-[280px] h-[280px] mx-auto md:mx-0">
+          <div class="absolute -inset-4 rounded-full bg-gradient-to-r from-primary via-indigo-500 to-primary blur-xl opacity-60 dark:opacity-40 animate-spin-slow"></div>
+          <img class="relative w-full h-full rounded-full object-cover border-8 border-white dark:border-slate-900 shadow-2xl bg-white" 
+               src="https://github.com/WWW888ZZZ/Image/blob/main/1.jpg?raw=true" 
+               alt="Wasawat Profile">
+          
+          <div class="absolute bottom-6 -right-4 flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-full font-semibold text-sm shadow-xl z-10">
+            <span class="w-2.5 h-2.5 rounded-full bg-green-500 shadow-[0_0_0_4px_rgba(34,197,94,0.2)] animate-pulse-fast"></span>
+            <span class="text-slate-800 dark:text-slate-200">Available</span>
           </div>
-
         </div>
 
-
-        <div class="hero-content">
-
-          <div class="hero-label">
-            <span></span>
+        <!-- Hero Content -->
+        <div class="max-w-2xl text-center md:text-left z-10">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary font-semibold text-sm mb-6 border border-primary/20">
+            <span class="w-1.5 h-1.5 bg-primary rounded-full animate-ping"></span>
             Full-Stack Developer
           </div>
-
-          <h1 class="hero-title">
-            สวัสดีครับ 👋
-            <br>
-            ผม <span class="highlight">Wasawat</span>
+          
+          <h1 class="font-display text-4xl md:text-5xl lg:text-7xl font-bold leading-tight tracking-tight mb-4 text-slate-900 dark:text-white">
+            สวัสดีครับ 👋<br>
+            ผม <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-emerald-400">Wasawat</span>
           </h1>
-
-          <p class="hero-role">
+          
+          <p class="font-display text-lg md:text-xl text-slate-600 dark:text-slate-400 font-medium mb-6">
             Web Developer • Backend • DevOps
           </p>
-
-          <p class="hero-description">
-            ผมสนใจการพัฒนา Web Application ตั้งแต่
-            Frontend, Backend, Database
-            ไปจนถึงการ Deploy และดูแล Server
-            โดยเน้นสร้างระบบที่ใช้งานง่ายและสามารถต่อยอดได้
+          
+          <p class="text-slate-600 dark:text-slate-400 text-lg md:text-xl mb-10 leading-relaxed max-w-xl mx-auto md:mx-0">
+            ผมสนใจการพัฒนา Web Application ตั้งแต่ Frontend, Backend, Database ไปจนถึงการ Deploy และดูแล Server โดยเน้นสร้างระบบที่ใช้งานง่ายและสามารถต่อยอดได้
           </p>
-
-          <div class="hero-actions">
-
-            <a
-              class="btn"
-              href="https://github.com/WWW888ZZZ"
-              target="_blank"
-            >
-              🐙 GitHub
+          
+          <div class="flex flex-wrap items-center justify-center md:justify-start gap-4">
+            <a href="https://github.com/WWW888ZZZ" target="_blank" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-primary hover:bg-primary-dark text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(15,139,130,0.3)]">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+              GitHub
             </a>
-
-            <a
-              class="btn btn-secondary"
-              href="https://www.facebook.com/wasawat.mork"
-              target="_blank"
-            >
-              📘 Facebook
+            <a href="https://www.facebook.com/wasawat.mork" target="_blank" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-white dark:bg-slate-800 text-slate-800 dark:text-white font-semibold border border-slate-200 dark:border-slate-700 hover:border-blue-500 hover:text-blue-500 transition-all hover:-translate-y-1 shadow-sm">
+              <svg class="w-5 h-5 text-[#0866FF]" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              Facebook
             </a>
-
-            <a
-              class="btn btn-secondary"
-              href="#projects"
-            >
+            <a href="#projects" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-white dark:bg-slate-800 text-slate-800 dark:text-white font-semibold border border-slate-200 dark:border-slate-700 hover:border-primary hover:text-primary transition-all hover:-translate-y-1 shadow-sm">
               🚀 ดูผลงาน
             </a>
-
           </div>
-
         </div>
-
       </div>
-
     </section>
-
 
     <!-- =====================================================
          SKILLS
     ===================================================== -->
-
-    <section id="skills" class="reveal">
-
-      <div class="container">
-
-        <div class="section-heading">
-
-          <div class="section-label">
-            Skills
-          </div>
-
-          <h2 class="section-title">
-            ทักษะที่ผมใช้งาน
-          </h2>
-
-          <p class="section-description">
-            เทคโนโลยีและเครื่องมือที่ใช้ในการพัฒนา
-            Web Application ตั้งแต่ Frontend ไปจนถึง Server
-          </p>
-
+    <section id="skills" class="py-24 reveal">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="mb-14 text-center md:text-left">
+          <span class="block text-primary font-bold text-sm tracking-widest uppercase mb-3">Skills</span>
+          <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">ทักษะที่ผมใช้งาน</h2>
+          <p class="text-slate-600 dark:text-slate-400 text-lg max-w-2xl">เทคโนโลยีและเครื่องมือที่ใช้ในการพัฒนา Web Application ตั้งแต่ Frontend ไปจนถึง Server</p>
         </div>
 
-
-        <div class="skills-grid">
-
-          <div class="skill-card">
-
-            <div class="skill-icon">
-              🎨
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+          
+          <!-- Skill Card -->
+          <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
+            <div class="absolute -right-12 -top-12 w-32 h-32 bg-primary/10 rounded-full group-hover:scale-150 transition-transform duration-700"></div>
+            <div class="w-14 h-14 flex items-center justify-center rounded-2xl bg-primary/10 text-primary text-2xl mb-6 relative">🎨</div>
+            <h3 class="font-display text-xl font-bold text-slate-900 dark:text-white mb-5 relative">Frontend Development</h3>
+            <div class="flex flex-wrap gap-2.5 relative">
+              <span class="px-4 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700/50 text-slate-700 dark:text-slate-300 text-sm font-medium border border-slate-200/60 dark:border-slate-600 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors cursor-default">React.js</span>
+              <span class="px-4 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700/50 text-slate-700 dark:text-slate-300 text-sm font-medium border border-slate-200/60 dark:border-slate-600 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors cursor-default">Vue.js</span>
+              <span class="px-4 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700/50 text-slate-700 dark:text-slate-300 text-sm font-medium border border-slate-200/60 dark:border-slate-600 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors cursor-default">JavaScript</span>
+              <span class="px-4 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700/50 text-slate-700 dark:text-slate-300 text-sm font-medium border border-slate-200/60 dark:border-slate-600 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors cursor-default">HTML / CSS</span>
+              <span class="px-4 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700/50 text-slate-700 dark:text-slate-300 text-sm font-medium border border-slate-200/60 dark:border-slate-600 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors cursor-default">Tailwind CSS</span>
             </div>
-
-            <h3>Frontend Development</h3>
-
-            <div class="chips">
-
-              <span class="chip">React.js</span>
-
-              <span class="chip">JavaScript</span>
-
-              <span class="chip">HTML</span>
-
-              <span class="chip">CSS</span>
-
-              <span class="chip">Tailwind CSS</span>
-
-            </div>
-
           </div>
 
-
-          <div class="skill-card">
-
-            <div class="skill-icon">
-              ⚙️
+          <!-- Skill Card -->
+          <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
+            <div class="absolute -right-12 -top-12 w-32 h-32 bg-primary/10 rounded-full group-hover:scale-150 transition-transform duration-700"></div>
+            <div class="w-14 h-14 flex items-center justify-center rounded-2xl bg-primary/10 text-primary text-2xl mb-6 relative">⚙️</div>
+            <h3 class="font-display text-xl font-bold text-slate-900 dark:text-white mb-5 relative">Backend Development</h3>
+            <div class="flex flex-wrap gap-2.5 relative">
+              <span class="px-4 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700/50 text-slate-700 dark:text-slate-300 text-sm font-medium border border-slate-200/60 dark:border-slate-600 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors cursor-default">Node.js</span>
+              <span class="px-4 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700/50 text-slate-700 dark:text-slate-300 text-sm font-medium border border-slate-200/60 dark:border-slate-600 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors cursor-default">Express.js</span>
+              <span class="px-4 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700/50 text-slate-700 dark:text-slate-300 text-sm font-medium border border-slate-200/60 dark:border-slate-600 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors cursor-default">REST API</span>
+              <span class="px-4 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700/50 text-slate-700 dark:text-slate-300 text-sm font-medium border border-slate-200/60 dark:border-slate-600 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors cursor-default">Authentication</span>
             </div>
-
-            <h3>Backend Development</h3>
-
-            <div class="chips">
-
-              <span class="chip">Node.js</span>
-
-              <span class="chip">Express.js</span>
-
-              <span class="chip">REST API</span>
-
-              <span class="chip">Authentication</span>
-
-            </div>
-
           </div>
 
-
-          <div class="skill-card">
-
-            <div class="skill-icon">
-              🖥️
+          <!-- Skill Card -->
+          <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
+            <div class="absolute -right-12 -top-12 w-32 h-32 bg-primary/10 rounded-full group-hover:scale-150 transition-transform duration-700"></div>
+            <div class="w-14 h-14 flex items-center justify-center rounded-2xl bg-primary/10 text-primary text-2xl mb-6 relative">🖥️</div>
+            <h3 class="font-display text-xl font-bold text-slate-900 dark:text-white mb-5 relative">DevOps & Server</h3>
+            <div class="flex flex-wrap gap-2.5 relative">
+              <span class="px-4 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700/50 text-slate-700 dark:text-slate-300 text-sm font-medium border border-slate-200/60 dark:border-slate-600 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors cursor-default">Ubuntu Server</span>
+              <span class="px-4 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700/50 text-slate-700 dark:text-slate-300 text-sm font-medium border border-slate-200/60 dark:border-slate-600 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors cursor-default">Nginx</span>
+              <span class="px-4 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700/50 text-slate-700 dark:text-slate-300 text-sm font-medium border border-slate-200/60 dark:border-slate-600 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors cursor-default">Apache</span>
+              <span class="px-4 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700/50 text-slate-700 dark:text-slate-300 text-sm font-medium border border-slate-200/60 dark:border-slate-600 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors cursor-default">PM2</span>
+              <span class="px-4 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700/50 text-slate-700 dark:text-slate-300 text-sm font-medium border border-slate-200/60 dark:border-slate-600 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors cursor-default">Proxmox</span>
             </div>
-
-            <h3>DevOps & Server</h3>
-
-            <div class="chips">
-
-              <span class="chip">Ubuntu Server</span>
-
-              <span class="chip">Nginx</span>
-
-              <span class="chip">Apache</span>
-
-              <span class="chip">PM2</span>
-
-              <span class="chip">Proxmox</span>
-
-            </div>
-
           </div>
 
-
-          <div class="skill-card">
-
-            <div class="skill-icon">
-              🗄️
+          <!-- Skill Card -->
+          <div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
+            <div class="absolute -right-12 -top-12 w-32 h-32 bg-primary/10 rounded-full group-hover:scale-150 transition-transform duration-700"></div>
+            <div class="w-14 h-14 flex items-center justify-center rounded-2xl bg-primary/10 text-primary text-2xl mb-6 relative">🗄️</div>
+            <h3 class="font-display text-xl font-bold text-slate-900 dark:text-white mb-5 relative">Database & Tools</h3>
+            <div class="flex flex-wrap gap-2.5 relative">
+              <span class="px-4 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700/50 text-slate-700 dark:text-slate-300 text-sm font-medium border border-slate-200/60 dark:border-slate-600 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors cursor-default">MySQL</span>
+              <span class="px-4 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700/50 text-slate-700 dark:text-slate-300 text-sm font-medium border border-slate-200/60 dark:border-slate-600 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors cursor-default">MariaDB</span>
+              <span class="px-4 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700/50 text-slate-700 dark:text-slate-300 text-sm font-medium border border-slate-200/60 dark:border-slate-600 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors cursor-default">Prisma</span>
+              <span class="px-4 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700/50 text-slate-700 dark:text-slate-300 text-sm font-medium border border-slate-200/60 dark:border-slate-600 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors cursor-default">Git / GitHub</span>
+              <span class="px-4 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700/50 text-slate-700 dark:text-slate-300 text-sm font-medium border border-slate-200/60 dark:border-slate-600 hover:bg-primary/10 hover:text-primary hover:border-primary/30 transition-colors cursor-default">Figma</span>
             </div>
-
-            <h3>Database</h3>
-
-            <div class="chips">
-
-              <span class="chip">MySQL</span>
-
-              <span class="chip">MariaDB</span>
-
-              <span class="chip">Prisma</span>
-
-            </div>
-
-          </div>
-
-
-          <div class="skill-card">
-
-            <div class="skill-icon">
-              🛠️
-            </div>
-
-            <h3>Tools</h3>
-
-            <div class="chips">
-
-              <span class="chip">VS Code</span>
-
-              <span class="chip">Figma</span>
-
-              <span class="chip">Postman</span>
-
-              <span class="chip">Git</span>
-
-              <span class="chip">GitHub</span>
-
-            </div>
-
           </div>
 
         </div>
-
       </div>
-
     </section>
 
 
     <!-- =====================================================
          EXPERIENCE
     ===================================================== -->
-
-    <section id="experience" class="reveal">
-
-      <div class="container">
-
-        <div class="section-heading">
-
-          <div class="section-label">
-            Experience
-          </div>
-
-          <h2 class="section-title">
-            ประสบการณ์ & การศึกษา
-          </h2>
-
+    <section id="experience" class="py-24 reveal">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="mb-14 text-center">
+          <span class="block text-primary font-bold text-sm tracking-widest uppercase mb-3">Experience</span>
+          <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white tracking-tight">ประสบการณ์ & การศึกษา</h2>
         </div>
 
-
-        <div class="timeline">
-
-          <div class="timeline-item">
-
-            <div class="timeline-date">
-              2569 – ปัจจุบัน
-            </div>
-
-            <h3 class="timeline-title">
-              มหาวิทยาลัยราชภัฏอุดรธานี
-            </h3>
-
-            <div class="timeline-subtitle">
-              วิทยาการคอมพิวเตอร์
-            </div>
-
-            <p class="timeline-description">
-              ศึกษาด้านการเขียนโปรแกรม
-              การพัฒนาซอฟต์แวร์
-              ฐานข้อมูล และเทคโนโลยีคอมพิวเตอร์
+        <div class="relative pl-8 md:pl-10 border-l-2 border-primary/30 ml-4 md:ml-0 space-y-12">
+          
+          <!-- Timeline Item -->
+          <div class="relative">
+            <span class="absolute -left-[42px] md:-left-[50px] top-1 w-5 h-5 rounded-full bg-white dark:bg-slate-900 border-4 border-primary shadow-[0_0_0_4px_rgba(15,139,130,0.2)]"></span>
+            <div class="inline-block px-3 py-1 bg-primary/10 text-primary font-display font-semibold text-sm rounded-lg mb-3">2569 – ปัจจุบัน</div>
+            <h3 class="font-display text-2xl font-bold text-slate-900 dark:text-white mb-1">มหาวิทยาลัยราชภัฏอุดรธานี</h3>
+            <div class="text-slate-500 dark:text-slate-400 font-medium mb-3">วิทยาการคอมพิวเตอร์</div>
+            <p class="text-slate-600 dark:text-slate-400 text-[15px] leading-relaxed glass-card p-5 rounded-2xl mt-4">
+              ศึกษาด้านการเขียนโปรแกรม การพัฒนาซอฟต์แวร์ ฐานข้อมูล และเทคโนโลยีคอมพิวเตอร์แบบเจาะลึก รวมถึงการประยุกต์ใช้งานจริง
             </p>
-
           </div>
 
-
-          <div class="timeline-item">
-
-            <div class="timeline-date">
-              2563 – 2568
-            </div>
-
-            <h3 class="timeline-title">
-              วิทยาลัยเทคนิคอุดรธานี
-            </h3>
-
-            <div class="timeline-subtitle">
-              เทคโนโลยีสารสนเทศ
-            </div>
-
-            <p class="timeline-description">
-              ปวช. เทคโนโลยีสารสนเทศ
-              <br>
+          <!-- Timeline Item -->
+          <div class="relative">
+            <span class="absolute -left-[42px] md:-left-[50px] top-1 w-5 h-5 rounded-full bg-white dark:bg-slate-900 border-4 border-primary shadow-[0_0_0_4px_rgba(15,139,130,0.2)]"></span>
+            <div class="inline-block px-3 py-1 bg-primary/10 text-primary font-display font-semibold text-sm rounded-lg mb-3">2563 – 2568</div>
+            <h3 class="font-display text-2xl font-bold text-slate-900 dark:text-white mb-1">วิทยาลัยเทคนิคอุดรธานี</h3>
+            <div class="text-slate-500 dark:text-slate-400 font-medium mb-3">เทคโนโลยีสารสนเทศ</div>
+            <p class="text-slate-600 dark:text-slate-400 text-[15px] leading-relaxed glass-card p-5 rounded-2xl mt-4">
+              ปวช. เทคโนโลยีสารสนเทศ<br>
               ปวส. เทคโนโลยีสารสนเทศ
             </p>
-
           </div>
 
         </div>
-
       </div>
-
     </section>
 
 
     <!-- =====================================================
          PROJECTS
     ===================================================== -->
-
-    <section id="projects" class="reveal">
-
-      <div class="container">
-
-        <div class="section-heading">
-
-          <div class="section-label">
-            Projects
+    <section id="projects" class="py-24 reveal">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="mb-14 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div>
+            <span class="block text-primary font-bold text-sm tracking-widest uppercase mb-3">Projects</span>
+            <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white tracking-tight mb-2">โปรเจกต์ที่ผ่านมา</h2>
+            <p class="text-slate-600 dark:text-slate-400 text-lg">ตัวอย่างโปรเจกต์ที่ผมเคยพัฒนา และเทคโนโลยีที่นำมาใช้งาน</p>
           </div>
-
-          <h2 class="section-title">
-            โปรเจกต์ที่ผ่านมา
-          </h2>
-
-          <p class="section-description">
-            ตัวอย่างโปรเจกต์ที่ผมเคยพัฒนา
-            และเทคโนโลยีที่นำมาใช้งาน
-          </p>
-
         </div>
 
-
-        <div class="projects-grid">
-
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
           <!-- PROJECT 1 -->
-
-          <div class="project-card">
-
-            <div class="project-cover">
-
-              <div class="project-icon">
-                💼
-              </div>
-
+          <div class="glass-card rounded-3xl overflow-hidden flex flex-col group">
+            <div class="h-56 relative flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-100 to-primary/10 dark:from-slate-800 dark:to-primary/20">
+              <div class="absolute -right-20 -bottom-20 w-64 h-64 border border-primary/20 rounded-full"></div>
+              <div class="relative z-10 w-20 h-20 flex items-center justify-center rounded-3xl bg-white dark:bg-slate-900 shadow-xl text-4xl group-hover:scale-110 transition-transform duration-500">💼</div>
             </div>
-
-            <div class="project-body">
-
-              <h3 class="project-title">
-                WorkHorizon
-              </h3>
-
-              <p class="project-description">
-                เว็บไซต์หางานแบบ Full-Stack
-                สำหรับเชื่อมต่อบริษัทและผู้หางาน
-                พร้อมระบบ Authentication
-                และ Admin Dashboard
+            <div class="p-8 flex-1 flex flex-col">
+              <h3 class="font-display text-2xl font-bold text-slate-900 dark:text-white mb-3">WorkHorizon</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-[15px] mb-6 flex-1">
+                เว็บไซต์หางานแบบ Full-Stack สำหรับเชื่อมต่อบริษัทและผู้หางาน พร้อมระบบ Authentication, จัดการ Profile และ Admin Dashboard สำหรับบริหารจัดการระบบ
               </p>
-
-              <div class="project-tags">
-
-                <span class="project-tag">
-                  React
-                </span>
-
-                <span class="project-tag">
-                  Node.js
-                </span>
-
-                <span class="project-tag">
-                  MySQL
-                </span>
-
-                <span class="project-tag">
-                  Tailwind
-                </span>
-
+              <div class="flex flex-wrap gap-2 mb-8">
+                <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-lg">React</span>
+                <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-lg">Node.js</span>
+                <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-lg">MySQL</span>
+                <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-lg">Tailwind</span>
               </div>
-
-              <button
-                class="btn btn-secondary"
-                onclick="openModal('workhorizon')"
-              >
-                ดูรายละเอียด →
+              <button onclick="openModal('workhorizon')" class="w-full py-3.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white font-semibold hover:border-primary hover:text-primary transition-colors flex items-center justify-center gap-2 shadow-sm">
+                ดูรายละเอียด 
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
               </button>
-
             </div>
-
           </div>
-
 
           <!-- PROJECT 2 -->
-
-          <div class="project-card">
-
-            <div class="project-cover">
-
-              <div class="project-icon">
-                🗳️
-              </div>
-
+          <div class="glass-card rounded-3xl overflow-hidden flex flex-col group">
+            <div class="h-56 relative flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-100 to-indigo-500/10 dark:from-slate-800 dark:to-indigo-500/20">
+              <div class="absolute -left-20 -top-20 w-64 h-64 border border-indigo-500/20 rounded-full"></div>
+              <div class="relative z-10 w-20 h-20 flex items-center justify-center rounded-3xl bg-white dark:bg-slate-900 shadow-xl text-4xl group-hover:scale-110 transition-transform duration-500">🗳️</div>
             </div>
-
-            <div class="project-body">
-
-              <h3 class="project-title">
-                ระบบลงคะแนนเลือกตั้ง
-              </h3>
-
-              <p class="project-description">
-                ระบบเลือกตั้งออนไลน์
-                ที่ออกแบบให้ใช้งานง่าย
-                พร้อมระบบจัดการข้อมูล
-                และการลงคะแนนผ่านเว็บไซต์
+            <div class="p-8 flex-1 flex flex-col">
+              <h3 class="font-display text-2xl font-bold text-slate-900 dark:text-white mb-3">ระบบลงคะแนนเลือกตั้ง</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-[15px] mb-6 flex-1">
+                ระบบเลือกตั้งออนไลน์ที่ออกแบบให้ใช้งานง่าย ปลอดภัย พร้อมระบบจัดการข้อมูลผู้สมัคร และสรุปผลการลงคะแนนผ่าน Dashboard แบบเรียลไทม์
               </p>
-
-              <div class="project-tags">
-
-                <span class="project-tag">
-                  React
-                </span>
-
-                <span class="project-tag">
-                  Node.js
-                </span>
-
-                <span class="project-tag">
-                  MySQL
-                </span>
-
+              <div class="flex flex-wrap gap-2 mb-8">
+                <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-lg">React</span>
+                <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-lg">Node.js</span>
+                <span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-lg">MySQL</span>
               </div>
-
-              <button
-                class="btn btn-secondary"
-                onclick="openModal('election')"
-              >
-                ดูรายละเอียด →
+              <button onclick="openModal('election')" class="w-full py-3.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white font-semibold hover:border-primary hover:text-primary transition-colors flex items-center justify-center gap-2 shadow-sm">
+                ดูรายละเอียด 
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
               </button>
-
             </div>
-
           </div>
 
-
         </div>
-
       </div>
-
     </section>
 
 
     <!-- =====================================================
          CONTACT
     ===================================================== -->
-
-    <section id="contact" class="reveal">
-
-      <div class="container">
-
-        <div class="contact-box">
-
-          <div class="section-label">
-            Contact
+    <section id="contact" class="py-24 reveal">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="relative overflow-hidden text-center py-20 px-8 rounded-[3rem] border border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 backdrop-blur-xl shadow-2xl">
+          <!-- decorative bg -->
+          <div class="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent opacity-50 pointer-events-none"></div>
+          
+          <div class="relative z-10">
+            <span class="block text-primary font-bold text-sm tracking-widest uppercase mb-4">Contact</span>
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 tracking-tight">มาคุยโปรเจกต์กัน 🚀</h2>
+            <p class="text-slate-600 dark:text-slate-400 text-lg max-w-xl mx-auto mb-10">
+              หากมีโปรเจกต์ เว็บไซต์ ไอเดียที่อยากพัฒนา หรือต้องการร่วมงานกัน สามารถติดต่อผมตามช่องทางด้านล่างได้เลยครับ
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+              <a href="mailto:morkaxax@gmail.com" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-primary hover:bg-primary-dark text-white font-semibold transition-all hover:-translate-y-1 hover:shadow-lg">
+                ✉️ ส่งอีเมลหาผม
+              </a>
+              <a href="https://github.com/WWW888ZZZ" target="_blank" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white font-semibold hover:border-primary hover:text-primary transition-all hover:-translate-y-1 shadow-sm">
+                🐙 GitHub
+              </a>
+              <a href="https://www.facebook.com/wasawat.mork" target="_blank" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white font-semibold hover:border-blue-500 hover:text-blue-500 transition-all hover:-translate-y-1 shadow-sm">
+                📘 Facebook
+              </a>
+            </div>
           </div>
-
-          <h2>
-            มาคุยโปรเจกต์กัน 🚀
-          </h2>
-
-          <p>
-            หากมีโปรเจกต์ เว็บไซต์ หรือไอเดียที่อยากพัฒนา
-            สามารถติดต่อผมได้เลยครับ
-          </p>
-
-          <div class="contact-buttons">
-
-            <a
-              class="btn"
-              href="mailto:morkaxax@gmail.com"
-            >
-              ✉️ ส่งอีเมล
-            </a>
-
-            <a
-              class="btn btn-secondary"
-              href="https://github.com/WWW888ZZZ"
-              target="_blank"
-            >
-              🐙 GitHub
-            </a>
-
-            <a
-              class="btn btn-secondary"
-              href="https://www.facebook.com/wasawat.mork"
-              target="_blank"
-            >
-              📘 Facebook
-            </a>
-
-          </div>
-
         </div>
-
       </div>
-
     </section>
-
   </main>
 
 
   <!-- =====================================================
        FOOTER
   ===================================================== -->
-
-  <footer>
-
-    <div class="container">
-
-      <div class="socials">
-
-        <a
-          href="https://github.com/WWW888ZZZ"
-          target="_blank"
-          title="GitHub"
-        >
-          🐙
-        </a>
-
-        <a
-          href="https://www.facebook.com/wasawat.mork"
-          target="_blank"
-          title="Facebook"
-        >
-          📘
-        </a>
-
-        <a
-          href="mailto:morkaxax@gmail.com"
-          title="Email"
-        >
-          ✉️
-        </a>
-
+  <footer class="py-10 border-t border-slate-200 dark:border-slate-800/50 bg-white/30 dark:bg-slate-950/30 backdrop-blur-sm text-center">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex justify-center gap-4 mb-6">
+        <a href="https://github.com/WWW888ZZZ" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xl hover:-translate-y-1 hover:border-primary hover:text-primary transition-all shadow-sm">🐙</a>
+        <a href="https://www.facebook.com/wasawat.mork" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xl hover:-translate-y-1 hover:border-primary hover:text-primary transition-all shadow-sm">📘</a>
+        <a href="mailto:morkaxax@gmail.com" class="w-12 h-12 flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xl hover:-translate-y-1 hover:border-primary hover:text-primary transition-all shadow-sm">✉️</a>
       </div>
-
-      <p>
+      <p class="text-slate-500 dark:text-slate-500 text-sm font-medium">
         © 2026 Wasawat. All rights reserved.
       </p>
-
     </div>
-
   </footer>
 
 
   <!-- =====================================================
        SCROLL TOP
   ===================================================== -->
-
-  <button
-    class="scroll-top"
-    id="scrollTop"
-    title="กลับขึ้นด้านบน"
-  >
+  <button id="scrollTop" class="fixed right-6 bottom-6 w-12 h-12 hidden items-center justify-center rounded-full bg-primary text-white text-xl shadow-xl hover:-translate-y-1 hover:bg-primary-dark transition-all z-40" title="กลับขึ้นด้านบน">
     ↑
   </button>
 
@@ -1984,333 +409,160 @@
   <!-- =====================================================
        MODAL
   ===================================================== -->
-
-  <div class="modal" id="projectModal">
-
-    <div class="modal-content">
-
-      <h2 id="modalTitle">
-        Project
-      </h2>
-
-      <p id="modalDescription">
-        Description
-      </p>
-
-      <div class="modal-actions">
-
-        <a
-          class="btn"
-          id="demoBtn"
-          href="#"
-          target="_blank"
-        >
+  <div id="projectModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+    <div class="w-full max-w-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 shadow-2xl animate-modal-in">
+      
+      <h2 id="modalTitle" class="font-display text-2xl font-bold text-primary mb-4">Project</h2>
+      <p id="modalDescription" class="text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">Description</p>
+      
+      <div class="flex flex-wrap gap-3 mb-6">
+        <a id="demoBtn" href="#" target="_blank" class="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-primary hover:bg-primary-dark text-white font-semibold transition-colors">
           🚀 Demo
         </a>
-
-        <a
-          class="btn btn-secondary"
-          id="repoBtn"
-          href="#"
-          target="_blank"
-        >
+        <a id="repoBtn" href="#" target="_blank" class="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-white font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors border border-slate-200 dark:border-slate-700">
           🐙 Source Code
         </a>
-
       </div>
-
-      <button
-        class="modal-close"
-        onclick="closeModal()"
-      >
-        ปิด
+      
+      <button onclick="closeModal()" class="w-full py-3 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+        ปิดหน้าต่าง
       </button>
 
     </div>
-
   </div>
 
 
   <script>
-
     /* =====================================================
-       THEME
+       THEME (Updated for Tailwind Dark Mode)
     ===================================================== */
+    const themeBtn = document.getElementById("themeBtn");
+    const htmlElement = document.documentElement;
 
-    const themeBtn =
-      document.getElementById("themeBtn");
-
+    // ตรวจสอบ Theme เริ่มต้นจากระบบหรือ LocalStorage (ค่าเริ่มต้นใช้ Light)
     let theme = "light";
 
     function applyTheme(value) {
-
       theme = value;
-
       if (value === "dark") {
-
-        document.body.setAttribute(
-          "data-theme",
-          "dark"
-        );
-
+        htmlElement.classList.add("dark");
         themeBtn.textContent = "☀️";
-
       } else {
-
-        document.body.removeAttribute(
-          "data-theme"
-        );
-
+        htmlElement.classList.remove("dark");
         themeBtn.textContent = "🌙";
       }
     }
 
-    applyTheme("light");
+    applyTheme(theme);
 
     themeBtn.addEventListener("click", () => {
-
-      applyTheme(
-        theme === "dark"
-          ? "light"
-          : "dark"
-      );
-
+      applyTheme(theme === "dark" ? "light" : "dark");
     });
-
 
     /* =====================================================
        ACTIVE NAV
     ===================================================== */
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
 
-    const sections =
-      document.querySelectorAll("section[id]");
-
-    const navLinks =
-      document.querySelectorAll(".nav-menu a");
-
-    const observer =
-      new IntersectionObserver(
-        entries => {
-
-          entries.forEach(entry => {
-
-            if (entry.isIntersecting) {
-
-              navLinks.forEach(link => {
-
-                link.classList.toggle(
-                  "active",
-                  link.getAttribute("href")
-                  === "#" + entry.target.id
-                );
-
-              });
-
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            if (link.getAttribute("href") === "#" + entry.target.id) {
+              link.classList.add("text-primary", "bg-primary/10");
+              link.classList.remove("text-slate-600", "dark:text-slate-400");
+            } else {
+              link.classList.remove("text-primary", "bg-primary/10");
+              link.classList.add("text-slate-600", "dark:text-slate-400");
             }
-
           });
-
-        },
-        {
-          rootMargin:
-            "-40% 0px -50% 0px"
         }
-      );
+      });
+    }, { rootMargin: "-40% 0px -50% 0px" });
 
-    sections.forEach(section => {
-      observer.observe(section);
-    });
-
+    sections.forEach(section => observer.observe(section));
 
     /* =====================================================
        REVEAL ANIMATION
     ===================================================== */
+    const revealElements = document.querySelectorAll(".reveal");
 
-    const revealElements =
-      document.querySelectorAll(".reveal");
-
-    const revealObserver =
-      new IntersectionObserver(
-        entries => {
-
-          entries.forEach(entry => {
-
-            if (entry.isIntersecting) {
-
-              entry.target.classList.add("show");
-
-              revealObserver.unobserve(
-                entry.target
-              );
-
-            }
-
-          });
-
-        },
-        {
-          threshold: .12
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          revealObserver.unobserve(entry.target);
         }
-      );
+      });
+    }, { threshold: 0.12 });
 
-    revealElements.forEach(element => {
-      revealObserver.observe(element);
-    });
-
+    revealElements.forEach(element => revealObserver.observe(element));
 
     /* =====================================================
        PROJECT MODAL
     ===================================================== */
-
     const projectData = {
-
       workhorizon: {
-
         title: "WorkHorizon",
-
-        description:
-          "โปรเจกต์เว็บหางานแบบ Full-Stack " +
-          "สร้างขึ้นเพื่อเชื่อมต่อระหว่างบริษัท " +
-          "และผู้หางาน โดยมีระบบ Authentication " +
-          "และ Admin Dashboard สำหรับจัดการข้อมูล",
-
+        description: "โปรเจกต์เว็บหางานแบบ Full-Stack สร้างขึ้นเพื่อเชื่อมต่อระหว่างบริษัท และผู้หางาน โดยมีระบบ Authentication ควบคุมสิทธิ์การใช้งาน และ Admin Dashboard สำหรับจัดการข้อมูลระบบทั้งหมด",
         demo: "#",
-
         repo: "#"
-
       },
-
       election: {
-
         title: "ระบบลงคะแนนเลือกตั้ง",
-
-        description:
-          "ระบบเลือกตั้งออนไลน์ที่ออกแบบ " +
-          "เพื่อให้ผู้ใช้สามารถลงคะแนนได้ง่าย " +
-          "พร้อมระบบจัดการข้อมูลและผลการเลือกตั้ง",
-
+        description: "ระบบเลือกตั้งออนไลน์ที่ออกแบบเพื่อให้ผู้ใช้สามารถลงคะแนนได้ง่าย รวดเร็ว และปลอดภัย พร้อมระบบจัดการข้อมูลผู้สมัคร และหน้าสรุปผลการเลือกตั้ง (Dashboard) แบบเรียลไทม์",
         demo: "#",
-
         repo: "#"
-
       }
-
     };
 
+    const modal = document.getElementById("projectModal");
 
     function openModal(project) {
-
-      const data =
-        projectData[project];
-
-      document.getElementById(
-        "modalTitle"
-      ).textContent = data.title;
-
-      document.getElementById(
-        "modalDescription"
-      ).textContent = data.description;
-
-      document.getElementById(
-        "demoBtn"
-      ).href = data.demo;
-
-      document.getElementById(
-        "repoBtn"
-      ).href = data.repo;
-
-      document
-        .getElementById("projectModal")
-        .classList.add("show");
-
-      document.body.style.overflow =
-        "hidden";
+      const data = projectData[project];
+      document.getElementById("modalTitle").textContent = data.title;
+      document.getElementById("modalDescription").textContent = data.description;
+      document.getElementById("demoBtn").href = data.demo;
+      document.getElementById("repoBtn").href = data.repo;
+      
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      document.body.style.overflow = "hidden";
     }
-
 
     function closeModal() {
-
-      document
-        .getElementById("projectModal")
-        .classList.remove("show");
-
-      document.body.style.overflow =
-        "";
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+      document.body.style.overflow = "";
     }
 
+    modal.addEventListener("click", event => {
+      if (event.target.id === "projectModal") closeModal();
+    });
 
-    document
-      .getElementById("projectModal")
-      .addEventListener(
-        "click",
-        event => {
-
-          if (
-            event.target.id
-            === "projectModal"
-          ) {
-
-            closeModal();
-
-          }
-
-        }
-      );
-
-
-    document.addEventListener(
-      "keydown",
-      event => {
-
-        if (event.key === "Escape") {
-          closeModal();
-        }
-
-      }
-    );
-
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeModal();
+    });
 
     /* =====================================================
        SCROLL TOP
     ===================================================== */
+    const scrollTop = document.getElementById("scrollTop");
 
-    const scrollTop =
-      document.getElementById(
-        "scrollTop"
-      );
-
-    window.addEventListener(
-      "scroll",
-      () => {
-
-        if (window.scrollY > 500) {
-
-          scrollTop.style.display =
-            "flex";
-
-        } else {
-
-          scrollTop.style.display =
-            "none";
-
-        }
-
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 500) {
+        scrollTop.classList.remove("hidden");
+        scrollTop.classList.add("flex");
+      } else {
+        scrollTop.classList.add("hidden");
+        scrollTop.classList.remove("flex");
       }
-    );
+    });
 
-    scrollTop.addEventListener(
-      "click",
-      () => {
-
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth"
-        });
-
-      }
-    );
-
+    scrollTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
   </script>
-
 </body>
 </html>
